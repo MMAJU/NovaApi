@@ -1,0 +1,93 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spearheadconsult.com/nova/xml"
+           targetNamespace="http://spearheadconsult.com/nova/xml" elementFormDefault="qualified">
+
+           
+        <xs:complexType  name="ExistingCustomer">
+            <xs:sequence>
+                <xs:element name="CustomerCode" type="xs:string"/>
+                <xs:element name="RegisteredEmail" type="xs:string"/>
+                <xs:element name="RegisteredPhone" type="xs:string"/>
+                <xs:element name="Password" type="xs:string"/>
+    
+            </xs:sequence>
+        </xs:complexType >
+           
+    <xs:complexType  name="SignOn">
+        <xs:sequence>
+            <xs:element name="Username" type="xs:string"/>
+            <xs:element name="Password" type="xs:string"/>
+
+        </xs:sequence>
+    </xs:complexType >
+
+    <xs:complexType  name="AccountDetails">
+        <xs:sequence>
+            <xs:element name="AccountTitle" type="xs:string"/>
+            <xs:element name="AccountNumber" type="xs:string"/>
+            <xs:element name="Nuban" type="xs:string"/>
+            <xs:element name="Branch" type="xs:string"/>
+            <xs:element name="AccountType" type="xs:string"/>
+            <xs:element name="ActualBalance" type="xs:string"/>
+            <xs:element name="AvailableBalance" type="xs:string"/>
+            <xs:element name="HasLien" type="xs:boolean" default="false"/>
+            <xs:element name="Dormancy" type="xs:string"/>
+
+        </xs:sequence>
+    </xs:complexType >
+
+    <xs:element  name="CustomerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CustomerCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element >
+
+    <xs:element name="CustomerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="FullName" type="xs:string"/>
+                <xs:element name="FirstName" type="xs:string"/>
+                <xs:element name="LastName" type="xs:string"/>
+                <xs:element name="OtherName" type="xs:string"/>
+                <xs:element name="Phone" type="xs:string"/>
+                <xs:element name="Email" type="xs:string"/>
+                <xs:element name="Accounts" type="tns:AccountDetails"  maxOccurs="unbounded"/>
+                <xs:element name="Status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element  name="AccountBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AccountNumber" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element >
+
+    <xs:element name="AccountBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Accounts" type="tns:AccountDetails" />
+                <xs:element name="Status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element  name="AccountStatementRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AccountNumber" type="xs:string"/>
+                <xs:element name="StartDate" type="xs:string"/>
+                <xs:element name="EndDate" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element >
+
+  
+
+
+
+</xs:schema>
